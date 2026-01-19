@@ -355,7 +355,7 @@ export default function HomePage() {
                       <p className="text-gray-500 mb-6">{product.tagline}</p>
 
                       {/* Specs */}
-                      <div className="grid grid-cols-4 gap-4 py-4 border-y border-gray-100 mb-6">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 py-4 border-y border-gray-100 mb-6">
                         <div className="text-center">
                           <div className="text-xs text-gray-400 mb-1">Price</div>
                           <div className="font-semibold text-green-600">
