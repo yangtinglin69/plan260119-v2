@@ -4,13 +4,16 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 只保護 /admin 路徑（但不包括 /admin-login）
+  // 登入 API 不需要認證（重要！）
+  if (pathname === '/api/admin-auth') {
+    return NextResponse.next();
+  }
+
+  // 只保護 /admin 路徑
   if (pathname.startsWith('/admin')) {
-    // 檢查是否有認證 cookie
     const authCookie = request.cookies.get('admin-auth');
     
     if (!authCookie || authCookie.value !== 'authenticated') {
-      // 沒有認證，導向登入頁
       const loginUrl = new URL('/admin-login', request.url);
       loginUrl.searchParams.set('from', pathname);
       return NextResponse.redirect(loginUrl);
