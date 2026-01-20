@@ -130,40 +130,60 @@ export default function HomePage() {
             }}
           />
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-3xl py-20">
-              <span 
-                className="inline-block px-6 py-2 rounded-full text-sm font-bold mb-8"
-                style={{ backgroundColor: site?.colors.accent || '#f59e0b', color: site?.colors.secondary || '#0f172a' }}
-              >
-                {heroModule.content.badge}
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-                {heroModule.content.headline}
-              </h1>
-              <p className="text-xl text-white/85 mb-8 whitespace-pre-line leading-relaxed">
-                {heroModule.content.subheadline}
-              </p>
-              <div 
-                className="text-xl font-bold mb-10 p-6 rounded-r-xl border-l-4 whitespace-pre-line"
-                style={{ 
-                  borderColor: site?.colors.accent || '#f59e0b',
-                  backgroundColor: `${site?.colors.accent || '#f59e0b'}20`,
-                  color: site?.colors.accent || '#f59e0b'
-                }}
-              >
-                {heroModule.content.highlight}
+            <div className="grid md:grid-cols-2 gap-12 items-center py-20">
+              {/* 左側文字 */}
+              <div>
+                <span 
+                  className="inline-block px-6 py-2 rounded-full text-sm font-bold mb-8"
+                  style={{ backgroundColor: site?.colors.accent || '#f59e0b', color: site?.colors.secondary || '#0f172a' }}
+                >
+                  {heroModule.content.badge}
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                  {heroModule.content.headline}
+                </h1>
+                <p className="text-xl text-white/85 mb-8 whitespace-pre-line leading-relaxed">
+                  {heroModule.content.subheadline}
+                </p>
+                <div 
+                  className="text-xl font-bold mb-10 p-6 rounded-r-xl border-l-4 whitespace-pre-line"
+                  style={{ 
+                    borderColor: site?.colors.accent || '#f59e0b',
+                    backgroundColor: `${site?.colors.accent || '#f59e0b'}20`,
+                    color: site?.colors.accent || '#f59e0b'
+                  }}
+                >
+                  {heroModule.content.highlight}
+                </div>
+                <a 
+                  href={heroModule.content.ctaLink}
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-bold transition-all hover:-translate-y-1"
+                  style={{ 
+                    backgroundColor: site?.colors.accent || '#f59e0b',
+                    color: site?.colors.secondary || '#0f172a',
+                    boxShadow: `0 4px 20px ${site?.colors.accent || '#f59e0b'}66`
+                  }}
+                >
+                  {heroModule.content.ctaText}
+                </a>
               </div>
-              <a 
-                href={heroModule.content.ctaLink}
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-bold transition-all hover:-translate-y-1"
-                style={{ 
-                  backgroundColor: site?.colors.accent || '#f59e0b',
-                  color: site?.colors.secondary || '#0f172a',
-                  boxShadow: `0 4px 20px ${site?.colors.accent || '#f59e0b'}66`
-                }}
-              >
-                {heroModule.content.ctaText}
-              </a>
+
+              {/* 右側 YouTube 影片 */}
+              {heroModule.content.youtubeUrl ? (
+                <div className="hidden md:block">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src={heroModule.content.youtubeUrl.replace('watch?v=', 'embed/').replace('youtu.be/', 'www.youtube.com/embed/')}
+                      title="Video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="hidden md:block" />
+              )}
             </div>
           </div>
         </section>
@@ -333,7 +353,7 @@ export default function HomePage() {
                         alt={product.name}
                         className="rounded-xl mb-6 max-h-48 object-contain"
                       />
-                      <a
+                      
                         href={product.affiliateLink}
                         target="_blank"
                         rel="nofollow sponsored"
