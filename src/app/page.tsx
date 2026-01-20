@@ -1,4 +1,3 @@
-// src/app/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -54,11 +53,9 @@ export default function HomePage() {
           fetch('/api/products'),
           fetch('/api/site'),
         ]);
-        
         const modulesData = await modulesRes.json();
         const productsData = await productsRes.json();
         const siteData = await siteRes.json();
-        
         if (modulesData.success) setModules(modulesData.data.filter((m: Module) => m.enabled));
         if (productsData.success) setProducts(productsData.data.filter((p: Product) => p.isActive));
         if (siteData.success) setSite(siteData.data);
@@ -68,7 +65,6 @@ export default function HomePage() {
         setLoading(false);
       }
     }
-    
     fetchData();
   }, []);
 
@@ -112,18 +108,17 @@ export default function HomePage() {
   const faqModule = getModule('faq');
 
   return (
-    <div className="min-h-screen bg-[#fefdfb]">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gray-50">
       {heroModule && (
-        <section 
+        <section
           className="min-h-screen flex items-center relative overflow-hidden"
-          style={{ 
-            background: `linear-gradient(135deg, ${site?.colors.primary || '#1e3a5f'} 0%, ${site?.colors.secondary || '#0f172a'} 100%)` 
+          style={{
+            background: `linear-gradient(135deg, ${site?.colors.primary || '#1e3a5f'} 0%, ${site?.colors.secondary || '#0f172a'} 100%)`
           }}
         >
-          <div 
+          <div
             className="absolute inset-0 opacity-10"
-            style={{ 
+            style={{
               backgroundImage: `url(${heroModule.content.backgroundImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
@@ -131,9 +126,8 @@ export default function HomePage() {
           />
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center py-20">
-              {/* 左側文字 */}
               <div>
-                <span 
+                <span
                   className="inline-block px-6 py-2 rounded-full text-sm font-bold mb-8"
                   style={{ backgroundColor: site?.colors.accent || '#f59e0b', color: site?.colors.secondary || '#0f172a' }}
                 >
@@ -145,9 +139,9 @@ export default function HomePage() {
                 <p className="text-xl text-white/85 mb-8 whitespace-pre-line leading-relaxed">
                   {heroModule.content.subheadline}
                 </p>
-                <div 
+                <div
                   className="text-xl font-bold mb-10 p-6 rounded-r-xl border-l-4 whitespace-pre-line"
-                  style={{ 
+                  style={{
                     borderColor: site?.colors.accent || '#f59e0b',
                     backgroundColor: `${site?.colors.accent || '#f59e0b'}20`,
                     color: site?.colors.accent || '#f59e0b'
@@ -155,10 +149,10 @@ export default function HomePage() {
                 >
                   {heroModule.content.highlight}
                 </div>
-                <a 
+                <a
                   href={heroModule.content.ctaLink}
                   className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-bold transition-all hover:-translate-y-1"
-                  style={{ 
+                  style={{
                     backgroundColor: site?.colors.accent || '#f59e0b',
                     color: site?.colors.secondary || '#0f172a',
                     boxShadow: `0 4px 20px ${site?.colors.accent || '#f59e0b'}66`
@@ -167,8 +161,6 @@ export default function HomePage() {
                   {heroModule.content.ctaText}
                 </a>
               </div>
-
-              {/* 右側 YouTube 影片 */}
               {heroModule.content.youtubeUrl ? (
                 <div className="hidden md:block">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
@@ -189,18 +181,17 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Pain Points Section */}
       {painPointsModule && (
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative">
-                <img 
-                  src={painPointsModule.content.image} 
+                <img
+                  src={painPointsModule.content.image}
                   alt="Pain points"
                   className="rounded-2xl shadow-2xl"
                 />
-                <div 
+                <div
                   className="absolute -top-5 -left-5 w-full h-full rounded-2xl -z-10 opacity-30"
                   style={{ backgroundColor: site?.colors.accent || '#f59e0b' }}
                 />
@@ -225,14 +216,13 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Story Section */}
       {storyModule && (
         <section className="py-20 bg-slate-50">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-16">
               <div className="md:sticky md:top-24 self-start">
-                <img 
-                  src={storyModule.content.image} 
+                <img
+                  src={storyModule.content.image}
                   alt="About"
                   className="rounded-2xl shadow-xl"
                 />
@@ -242,8 +232,8 @@ export default function HomePage() {
                   {storyModule.content.title}
                 </h2>
                 {storyModule.content.paragraphs.map((paragraph: string, index: number) => (
-                  <p 
-                    key={index} 
+                  <p
+                    key={index}
                     className={`text-lg leading-loose mb-6 ${index === 0 ? 'text-xl font-medium' : 'text-gray-700'}`}
                     style={index === 0 ? { color: site?.colors.primary || '#1e3a5f' } : {}}
                   >
@@ -256,7 +246,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Method Section */}
       {methodModule && (
         <section className="py-20 text-white" style={{ backgroundColor: site?.colors.primary || '#1e3a5f' }}>
           <div className="container mx-auto px-6">
@@ -266,8 +255,8 @@ export default function HomePage() {
             </p>
             <div className="grid md:grid-cols-4 gap-8">
               {methodModule.content.features.map((feature: any, index: number) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="bg-white/10 rounded-2xl p-8 text-center hover:bg-white/15 transition hover:-translate-y-1"
                 >
                   <div className="text-5xl mb-6">{feature.icon}</div>
@@ -280,7 +269,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Comparison Table Section */}
       {comparisonModule && (
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
@@ -289,7 +277,7 @@ export default function HomePage() {
             </h2>
             <p className="text-xl text-center text-gray-500 mb-12">{comparisonModule.content.subtitle}</p>
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div 
+              <div
                 className="grid grid-cols-3 gap-4 p-5 text-white font-bold"
                 style={{ backgroundColor: site?.colors.primary || '#1e3a5f' }}
               >
@@ -298,8 +286,8 @@ export default function HomePage() {
                 <span>Benefit</span>
               </div>
               {comparisonModule.content.rows.map((row: any, index: number) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="grid grid-cols-3 gap-4 p-5 border-b border-gray-100 hover:bg-blue-50 transition"
                 >
                   <span className="font-semibold">{row.type}</span>
@@ -312,7 +300,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Products Section - TOP 10 */}
       {productsModule && (
         <section id="products" className="py-20 bg-slate-50">
           <div className="container mx-auto px-6">
@@ -320,21 +307,19 @@ export default function HomePage() {
               {productsModule.content.title}
             </h2>
             <p className="text-xl text-center text-gray-500 mb-12">{productsModule.content.subtitle}</p>
-            
             <div className="max-w-5xl mx-auto space-y-8">
               {products.slice(0, productsModule.content.showCount || 10).map((product) => (
-                <div 
-                  key={product.id} 
+                <div
+                  key={product.id}
                   className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition"
                 >
-                  {/* Product Header */}
-                  <div 
+                  <div
                     className="flex justify-between items-center px-6 py-4 text-white"
                     style={{ backgroundColor: site?.colors.primary || '#1e3a5f' }}
                   >
                     <span className="font-bold">{product.badge}</span>
                     <div className="flex items-center gap-2">
-                      <span 
+                      <span
                         className="text-2xl font-bold"
                         style={{ color: site?.colors.accent || '#f59e0b' }}
                       >
@@ -343,13 +328,10 @@ export default function HomePage() {
                       <span className="text-white/70 text-sm">/10 Score</span>
                     </div>
                   </div>
-
-                  {/* Product Body */}
                   <div className="grid md:grid-cols-3 gap-0">
-                    {/* Image & CTA */}
                     <div className="bg-slate-50 p-8 flex flex-col items-center justify-center">
-                      <img 
-                        src={product.images.main} 
+                      <img
+                        src={product.images.main}
                         alt={product.name}
                         className="rounded-xl mb-6 max-h-48 object-contain"
                       />
@@ -363,25 +345,19 @@ export default function HomePage() {
                         {product.ctaText}
                       </a>
                     </div>
-
-                    {/* Product Info */}
                     <div className="md:col-span-2 p-8">
-                      <h3 
+                      <h3
                         className="text-2xl font-bold mb-2"
                         style={{ color: site?.colors.primary || '#1e3a5f' }}
                       >
                         {product.name}
                       </h3>
                       <p className="text-gray-500 mb-6">{product.tagline}</p>
-
-                      {/* Specs */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 py-4 border-y border-gray-100 mb-6">
                         <div className="text-center">
                           <div className="text-xs text-gray-400 mb-1">Price</div>
                           <div className="font-semibold text-green-600">
-                            <span className="text-gray-300 line-through text-sm mr-1">
-                              ${product.price.original}
-                            </span>
+                            <span className="text-gray-300 line-through text-sm mr-1">${product.price.original}</span>
                             ${product.price.current}
                           </div>
                         </div>
@@ -392,10 +368,7 @@ export default function HomePage() {
                           </div>
                         ))}
                       </div>
-
-                      {/* Expandable Details */}
                       <div className="space-y-3">
-                        {/* Best For */}
                         <div className="border rounded-xl overflow-hidden">
                           <button
                             onClick={() => toggleProductDetail(`${product.id}-bestfor`)}
@@ -408,21 +381,15 @@ export default function HomePage() {
                             <div className="px-5 py-4">
                               <div className="flex flex-wrap gap-2">
                                 {product.bestFor.map((item, i) => (
-                                  <span key={i} className="px-3 py-1 bg-green-50 text-green-700 rounded-full text-sm">
-                                    ✓ {item}
-                                  </span>
+                                  <span key={i} className="px-3 py-1 bg-green-50 text-green-700 rounded-full text-sm">✓ {item}</span>
                                 ))}
                                 {product.notBestFor.map((item, i) => (
-                                  <span key={i} className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-sm">
-                                    ✗ {item}
-                                  </span>
+                                  <span key={i} className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-sm">✗ {item}</span>
                                 ))}
                               </div>
                             </div>
                           )}
                         </div>
-
-                        {/* Review */}
                         <div className="border rounded-xl overflow-hidden">
                           <button
                             onClick={() => toggleProductDetail(`${product.id}-review`)}
@@ -437,8 +404,6 @@ export default function HomePage() {
                             </div>
                           )}
                         </div>
-
-                        {/* Scores */}
                         <div className="border rounded-xl overflow-hidden">
                           <button
                             onClick={() => toggleProductDetail(`${product.id}-scores`)}
@@ -453,9 +418,7 @@ export default function HomePage() {
                                 {product.scores.map((score, i) => (
                                   <div key={i} className="flex justify-between items-center py-2 border-b border-gray-100">
                                     <span className="text-gray-600">{score.label}</span>
-                                    <span style={{ color: site?.colors.accent || '#f59e0b' }}>
-                                      {renderStars(score.score)}
-                                    </span>
+                                    <span style={{ color: site?.colors.accent || '#f59e0b' }}>{renderStars(score.score)}</span>
                                   </div>
                                 ))}
                               </div>
@@ -463,8 +426,6 @@ export default function HomePage() {
                           )}
                         </div>
                       </div>
-
-                      {/* Detail Link */}
                       <Link
                         href={`/products/${product.slug}`}
                         className="inline-flex items-center gap-2 mt-6 font-semibold hover:gap-4 transition-all"
@@ -481,7 +442,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Testimonials Section */}
       {testimonialsModule && (
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
@@ -492,9 +452,9 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {testimonialsModule.content.items.map((item: any, index: number) => (
                 <div key={index} className="bg-slate-50 rounded-2xl p-6 relative">
-                  <div className="absolute top-4 left-6 text-6xl text-amber-200 font-serif">"</div>
+                  <div className="absolute top-4 left-6 text-6xl text-amber-200 font-serif">&quot;</div>
                   <div className="flex items-center gap-4 mb-4">
-                    <div 
+                    <div
                       className="w-12 h-12 rounded-full flex items-center justify-center text-2xl"
                       style={{ backgroundColor: site?.colors.primary || '#1e3a5f' }}
                     >
@@ -516,7 +476,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* FAQ Section */}
       {faqModule && (
         <section className="py-20 bg-slate-50">
           <div className="container mx-auto px-6">
@@ -532,7 +491,7 @@ export default function HomePage() {
                     className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold hover:bg-slate-50 transition"
                   >
                     <span>{item.question}</span>
-                    <span 
+                    <span
                       className="text-xl"
                       style={{ color: site?.colors.primary || '#1e3a5f' }}
                     >
@@ -551,7 +510,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Footer */}
       <footer className="py-16 text-white/70" style={{ backgroundColor: site?.colors.secondary || '#0f172a' }}>
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
