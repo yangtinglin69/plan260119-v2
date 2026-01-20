@@ -161,8 +161,8 @@ export default function HomePage() {
                   {heroModule.content.ctaText}
                 </a>
               </div>
-              {heroModule.content.youtubeUrl ? (
-                <div className="hidden md:block">
+              {heroModule.content.youtubeUrl && (
+                <div className="w-full">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
                     <iframe
                       className="absolute inset-0 w-full h-full"
@@ -173,8 +173,6 @@ export default function HomePage() {
                     />
                   </div>
                 </div>
-              ) : (
-                <div className="hidden md:block" />
               )}
             </div>
           </div>
