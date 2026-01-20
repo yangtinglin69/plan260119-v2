@@ -54,6 +54,17 @@ export default function ModulesPage() {
           <div><label className="block text-sm font-medium mb-2">CTA 連結</label><input type="text" value={c.ctaLink || ''} onChange={e => upd('ctaLink', e.target.value)} className="w-full px-4 py-2 border rounded-lg" /></div>
         </div>
         <div><label className="block text-sm font-medium mb-2">背景圖片</label><input type="text" value={c.backgroundImage || ''} onChange={e => upd('backgroundImage', e.target.value)} className="w-full px-4 py-2 border rounded-lg" /></div>
+        <div>
+          <label className="block text-sm font-medium mb-2">🎬 YouTube 影片連結</label>
+          <input 
+            type="text" 
+            value={c.youtubeUrl || ''} 
+            onChange={e => upd('youtubeUrl', e.target.value)} 
+            className="w-full px-4 py-2 border rounded-lg" 
+            placeholder="https://www.youtube.com/watch?v=xxxxx 或 https://youtu.be/xxxxx"
+          />
+          <p className="text-xs text-gray-500 mt-1">支援標準 YouTube 連結或短連結格式，影片將嵌入顯示於 Hero 區塊</p>
+        </div>
       </div>
     );
 
