@@ -353,7 +353,7 @@ export default function HomePage() {
                         alt={product.name}
                         className="rounded-xl mb-6 max-h-48 object-contain"
                       />
-                      
+                      <a
                         href={product.affiliateLink}
                         target="_blank"
                         rel="nofollow sponsored"
