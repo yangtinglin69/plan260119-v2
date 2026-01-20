@@ -1,5 +1,3 @@
-# 🚀 Affiliate CMS - Vercel + Supabase 版本
-## 聯盟行銷前後台系統
 
 ---
 
