@@ -78,7 +78,7 @@ export default function GuidePage() {
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900">🧩 模組管理欄位說明</h2>
               {[
-                { title: '🏠 首屏 Hero', items: ['標籤、主標題、副標題', '重點提示、CTA 按鈕', '背景圖片網址'] },
+                { title: '🏠 首屏 Hero', items: ['標籤、主標題、副標題', '重點提示、CTA 按鈕', '背景圖片網址', '🎬 YouTube 影片連結 - 可嵌入介紹影片（支援標準連結或短連結）'] },
                 { title: '😫 痛點區', items: ['標題、圖片', '痛點列表（icon + 文字）'] },
                 { title: '📖 故事區', items: ['標題、圖片', '多個故事段落'] },
                 { title: '🔬 方法/特色', items: ['標題、副標題', '特色列表（icon + 標題 + 說明）'] },
@@ -92,6 +92,31 @@ export default function GuidePage() {
                   <div className="p-4 text-sm space-y-1">{section.items.map((item, i) => <div key={i}>• {item}</div>)}</div>
                 </div>
               ))}
+              
+              {/* YouTube 連結使用說明 */}
+              <div className="border-2 border-red-200 rounded-lg overflow-hidden bg-red-50/30">
+                <div className="bg-red-100 px-4 py-3 font-semibold text-red-800">🎬 YouTube 影片嵌入說明</div>
+                <div className="p-4 text-sm space-y-3">
+                  <div>
+                    <h4 className="font-medium text-red-900 mb-2">支援的連結格式</h4>
+                    <div className="bg-white rounded p-3 space-y-2 text-gray-700">
+                      <div>• 標準連結：<code className="bg-gray-100 px-2 py-1 rounded text-xs">https://www.youtube.com/watch?v=VIDEO_ID</code></div>
+                      <div>• 短連結：<code className="bg-gray-100 px-2 py-1 rounded text-xs">https://youtu.be/VIDEO_ID</code></div>
+                      <div>• 嵌入連結：<code className="bg-gray-100 px-2 py-1 rounded text-xs">https://www.youtube.com/embed/VIDEO_ID</code></div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-red-900 mb-2">使用建議</h4>
+                    <div className="bg-white rounded p-3 text-gray-700">
+                      <div>• 影片會自動嵌入 Hero 區塊中顯示</div>
+                      <div>• 建議使用產品介紹或品牌形象影片</div>
+                      <div>• 留空則不顯示影片區塊</div>
+                      <div>• 影片將以響應式設計呈現，適配各種螢幕</div>
+                    </div>
+                  </div>
+                  <p className="text-red-700 text-xs">💡 提示：複製 YouTube 網址欄的連結直接貼上即可，系統會自動解析</p>
+                </div>
+              </div>
             </div>
           )}
 
